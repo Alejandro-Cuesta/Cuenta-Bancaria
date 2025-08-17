@@ -10,18 +10,22 @@ public class CuentaAhorros extends Cuenta {
 
     @Override
     public void consignar(float monto) {
-        if (activa) super.consignar(monto);
+        if (activa) {
+            super.consignar(monto);
+        }
     }
 
     @Override
     public void retirar(float monto) {
-        if (activa) super.retirar(monto);
+        if (activa) {
+            super.retirar(monto);
+        }
     }
 
     @Override
     public void extractoMensual() {
         if (numeroRetiros > 4) {
-            comisionMensual += (numeroRetiros - 4) * 1000;
+            comisionMensual += 1000 * (numeroRetiros - 4);
         }
         super.extractoMensual();
         activa = saldo >= 10000;

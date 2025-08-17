@@ -1,7 +1,7 @@
 package dev.alejandro.model;
 
 public class CuentaCorriente extends Cuenta {
-    private float sobregiro = 0;
+    private float sobregiro = 0f;
 
     public CuentaCorriente(float saldo, float tasaAnual) {
         super(saldo, tasaAnual);
@@ -10,12 +10,12 @@ public class CuentaCorriente extends Cuenta {
     @Override
     public void retirar(float monto) {
         if (monto <= saldo) {
-            saldo -= monto;
+            super.retirar(monto);
         } else {
             sobregiro += monto - saldo;
             saldo = 0;
+            numeroRetiros++;
         }
-        numeroRetiros++;
     }
 
     @Override

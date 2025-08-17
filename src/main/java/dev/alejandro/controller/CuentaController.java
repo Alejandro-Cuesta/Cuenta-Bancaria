@@ -1,43 +1,24 @@
 package dev.alejandro.controller;
 
-import dev.alejandro.model.CuentaAhorros;
-import dev.alejandro.model.CuentaCorriente;
+import dev.alejandro.model.Cuenta;
 import dev.alejandro.service.CuentaService;
 
 public class CuentaController {
     private final CuentaService service = new CuentaService();
 
-    //Operaciones CuentaAhorros
-    public void consignar(CuentaAhorros cuenta, float monto) {
-        service.consignarSiActiva(cuenta, monto);
+    public void consignar(Cuenta cuenta, float monto) {
+        service.consignar(cuenta, monto);
     }
 
-    public void retirar(CuentaAhorros cuenta, float monto) {
-        service.retirarSiActiva(cuenta, monto);
+    public void retirar(Cuenta cuenta, float monto) {
+        service.retirar(cuenta, monto);
     }
 
-    public void generarExtracto(CuentaAhorros cuenta) {
+    public void generarExtracto(Cuenta cuenta) {
         service.generarExtracto(cuenta);
     }
 
-    public void imprimir(CuentaAhorros cuenta) {
-        System.out.println(service.obtenerEstadoAhorro(cuenta));
-    }
-
-    //Operaciones CuentaCorriente
-    public void consignar(CuentaCorriente cuenta, float monto) {
-        service.consignarCorriente(cuenta, monto);
-    }
-
-    public void retirar(CuentaCorriente cuenta, float monto) {
-        service.retirarCorriente(cuenta, monto);
-    }
-
-    public void generarExtracto(CuentaCorriente cuenta) {
-        service.generarExtracto(cuenta);
-    }
-
-    public void imprimir(CuentaCorriente cuenta) {
-        System.out.println(service.obtenerEstadoCorriente(cuenta));
+    public void imprimir(Cuenta cuenta) {
+        System.out.println(service.obtenerEstado(cuenta));
     }
 }

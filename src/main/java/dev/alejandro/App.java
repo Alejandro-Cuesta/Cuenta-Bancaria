@@ -8,19 +8,19 @@ public class App {
     public static void main(String[] args) {
         CuentaController controller = new CuentaController();
 
-        //Cuenta de Ahorros
-        CuentaAhorros ahorro = new CuentaAhorros(15000, 5);
-        controller.consignar(ahorro, 2000);
-        controller.retirar(ahorro, 500);
+        //Crear cuentas
+        CuentaAhorros ahorro = new CuentaAhorros(15000f, 0.03f);
+        CuentaCorriente corriente = new CuentaCorriente(5000f, 0.02f);
+
+        //Operaciones en cuenta de ahorros
+        controller.consignar(ahorro, 2000f);
+        controller.retirar(ahorro, 500f);
         controller.generarExtracto(ahorro);
         controller.imprimir(ahorro);
 
-        System.out.println("");
-
-        //Cuenta Corriente
-        CuentaCorriente corriente = new CuentaCorriente(5000, 3);
-        controller.retirar(corriente, 6000); //genera sobregiro
-        controller.consignar(corriente, 2000); //reduce sobregiro
+        //Operaciones en cuenta corriente
+        controller.retirar(corriente, 6000f); //genera sobregiro
+        controller.consignar(corriente, 1500f);
         controller.generarExtracto(corriente);
         controller.imprimir(corriente);
     }
